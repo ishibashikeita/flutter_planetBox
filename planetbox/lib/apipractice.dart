@@ -123,7 +123,7 @@ class _apiState extends State<api> {
                               Icons.arrow_back_ios,
                               color: Color.fromARGB(201, 242, 237, 237),
                             ),
-                          )
+                          ),
                         ],
                       ),
                       Container(
@@ -390,6 +390,7 @@ class _apiState2 extends State<api2> {
   String now = '';
   String capitals = '';
   int population = 0;
+  CountryClass? fav;
   @override
   void initState() {
     super.initState();
@@ -397,7 +398,7 @@ class _apiState2 extends State<api2> {
     int intRand = Random().nextInt(249);
     if (apiList[intRand]['name']['common'] != null ||
         apiList[intRand]['translations']['jpn']['official'] != null ||
-        apiList[intRand]['capitalInfo'] != null ||
+        apiList[intRand]['capitalInfo']['latlng'] != null ||
         apiList[intRand]['flags']['png'] != null ||
         apiList[intRand]['capital'] != null ||
         apiList[intRand]['population'] != null) {
@@ -409,6 +410,8 @@ class _apiState2 extends State<api2> {
           apiList[intRand]['capital'],
           apiList[intRand]['population']);
       country = (res.name + '(' + res.cname + ')');
+
+      fav = res;
 
       lat = res.latlng[0];
       lon = res.latlng[1];
@@ -461,6 +464,7 @@ class _apiState2 extends State<api2> {
                   child: Column(
                     children: [
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           IconButton(
                             onPressed: () {
@@ -470,7 +474,33 @@ class _apiState2 extends State<api2> {
                               Icons.arrow_back_ios,
                               color: Color.fromARGB(201, 242, 237, 237),
                             ),
-                          )
+                          ),
+                          Container(
+                            width: size.width * 0.3,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                IconButton(
+                                  onPressed: () {
+                                    favorite.add({fav!.name.toString(): fav});
+                                  },
+                                  icon: Icon(
+                                    Icons.favorite,
+                                    color: Color.fromARGB(201, 242, 237, 237),
+                                    size: 30,
+                                  ),
+                                ),
+                                IconButton(
+                                  onPressed: () {},
+                                  icon: Icon(
+                                    Icons.menu,
+                                    color: Color.fromARGB(201, 242, 237, 237),
+                                    size: 30,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
                         ],
                       ),
                       Container(
@@ -650,7 +680,7 @@ class _apiState2 extends State<api2> {
                               ),
                             )
                           : Container(),
-                    )
+                    ),
                   ],
                 ),
                 Container(
