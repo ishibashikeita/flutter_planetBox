@@ -504,7 +504,7 @@ class _apiState2 extends State<api2> {
                                           int i = 0;
                                           favorite.forEach((element) {
                                             element.forEach((key, value) {
-                                              if (key == fav!.name.toString()) {
+                                              if (key == indexed) {
                                                 i = favorite.indexOf(element);
                                               }
                                             });
@@ -520,7 +520,9 @@ class _apiState2 extends State<api2> {
                                               .setStringList('fl', fl)
                                               .then((result) {
                                             setState(() {
-                                              print(prefs.getStringList('fl'));
+                                              print(
+                                                prefs.getStringList('fl'),
+                                              );
                                               favoriteList = false;
                                             });
                                           });
@@ -994,7 +996,7 @@ class _apiState3 extends State<api3> {
                                           final prefs = await SharedPreferences
                                               .getInstance();
                                           final fl = prefs.getStringList('fl');
-                                          fl!.remove(widget.indexed.toString());
+                                          fl!.remove(widget.keylist.toString());
 
                                           prefs
                                               .setStringList('fl', fl)
@@ -1013,14 +1015,14 @@ class _apiState3 extends State<api3> {
                                       )
                                     : IconButton(
                                         onPressed: () async {
-                                          favorite.add({widget.indexed: fav!});
+                                          favorite.add({widget.keylist: fav!});
                                           //sharedpref
 
                                           final prefs = await SharedPreferences
                                               .getInstance();
                                           final fl = prefs.getStringList('fl');
                                           if (fl != null) {
-                                            fl.add(widget.indexed.toString());
+                                            fl.add(widget.keylist.toString());
                                             prefs
                                                 .setStringList('fl', fl)
                                                 .then((result) {
@@ -1032,7 +1034,7 @@ class _apiState3 extends State<api3> {
                                             });
                                           } else {
                                             List<String> strList = [
-                                              widget.indexed.toString()
+                                              widget.keylist.toString()
                                             ];
                                             prefs
                                                 .setStringList('fl', strList)
