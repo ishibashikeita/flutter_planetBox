@@ -395,6 +395,7 @@ class _apiState2 extends State<api2> {
   int population = 0;
   CountryClass? fav;
   bool favoriteList = false;
+  int indexed = 0;
   @override
   void initState() {
     super.initState();
@@ -416,6 +417,7 @@ class _apiState2 extends State<api2> {
       country = (res.name + '(' + res.cname + ')');
 
       fav = res;
+      indexed = intRand;
 
       lat = res.latlng[0];
       lon = res.latlng[1];
@@ -498,8 +500,7 @@ class _apiState2 extends State<api2> {
                               children: [
                                 (favoriteList)
                                     ? IconButton(
-                                        onPressed: () {
-                                          print(favorite);
+                                        onPressed: () async {
                                           int i = 0;
                                           favorite.forEach((element) {
                                             element.forEach((key, value) {
@@ -508,12 +509,20 @@ class _apiState2 extends State<api2> {
                                               }
                                             });
                                           });
+                                          favorite.removeAt(i);
+                                          //sharepref
+                                          final prefs = await SharedPreferences
+                                              .getInstance();
+                                          final fl = prefs.getStringList('fl');
+                                          fl!.remove(indexed.toString());
 
-                                          setState(() {
-                                            favorite.removeAt(i);
-                                            favoriteList = false;
-
-                                            print(favorite);
+                                          prefs
+                                              .setStringList('fl', fl)
+                                              .then((result) {
+                                            setState(() {
+                                              print(prefs.getStringList('fl'));
+                                              favoriteList = false;
+                                            });
                                           });
                                         },
                                         icon: Icon(
@@ -523,11 +532,23 @@ class _apiState2 extends State<api2> {
                                         ),
                                       )
                                     : IconButton(
-                                        onPressed: () {
-                                          setState(() {
-                                            favorite.add(
-                                                {fav!.name.toString(): fav!});
-                                            favoriteList = true;
+                                        onPressed: () async {
+                                          favorite.add(
+                                              {fav!.name.toString(): fav!});
+                                          //sharedpref
+
+                                          final prefs = await SharedPreferences
+                                              .getInstance();
+                                          final fl = prefs.getStringList('fl');
+                                          fl!.add(indexed.toString());
+
+                                          prefs
+                                              .setStringList('fl', fl)
+                                              .then((result) {
+                                            setState(() {
+                                              print(prefs.getStringList('fl'));
+                                              favoriteList = true;
+                                            });
                                           });
                                         },
                                         icon: Icon(
@@ -542,7 +563,9 @@ class _apiState2 extends State<api2> {
                                     await Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => favoriteSelect(),
+                                        builder: (context) => favoriteSelect(
+                                          indexed: indexed,
+                                        ),
                                       ),
                                     );
                                     setState(() {});
@@ -832,8 +855,9 @@ class _apiState2 extends State<api2> {
 }
 
 class api3 extends StatefulWidget {
-  api3({super.key, required this.cnt});
+  api3({super.key, required this.cnt, required this.indexed});
   CountryClass cnt;
+  int indexed;
 
   @override
   State<api3> createState() => _apiState3();
@@ -945,8 +969,7 @@ class _apiState3 extends State<api3> {
                               children: [
                                 (favoriteList)
                                     ? IconButton(
-                                        onPressed: () {
-                                          print(favorite);
+                                        onPressed: () async {
                                           int i = 0;
                                           favorite.forEach((element) {
                                             element.forEach((key, value) {
@@ -955,10 +978,20 @@ class _apiState3 extends State<api3> {
                                               }
                                             });
                                           });
-                                          setState(() {
-                                            favorite.removeAt(i);
-                                            favoriteList = false;
-                                            print(favorite);
+                                          favorite.removeAt(i);
+                                          //sharepref
+                                          final prefs = await SharedPreferences
+                                              .getInstance();
+                                          final fl = prefs.getStringList('fl');
+                                          fl!.remove(widget.indexed.toString());
+
+                                          prefs
+                                              .setStringList('fl', fl)
+                                              .then((result) {
+                                            setState(() {
+                                              print(prefs.getStringList('fl'));
+                                              favoriteList = false;
+                                            });
                                           });
                                         },
                                         icon: Icon(
@@ -968,11 +1001,23 @@ class _apiState3 extends State<api3> {
                                         ),
                                       )
                                     : IconButton(
-                                        onPressed: () {
-                                          setState(() {
-                                            favorite.add(
-                                                {fav!.name.toString(): fav!});
-                                            favoriteList = true;
+                                        onPressed: () async {
+                                          favorite.add(
+                                              {fav!.name.toString(): fav!});
+                                          //sharedpref
+
+                                          final prefs = await SharedPreferences
+                                              .getInstance();
+                                          final fl = prefs.getStringList('fl');
+                                          fl!.add(widget.indexed.toString());
+
+                                          prefs
+                                              .setStringList('fl', fl)
+                                              .then((result) {
+                                            setState(() {
+                                              print(prefs.getStringList('fl'));
+                                              favoriteList = true;
+                                            });
                                           });
                                         },
                                         icon: Icon(

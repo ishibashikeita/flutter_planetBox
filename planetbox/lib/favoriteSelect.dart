@@ -4,7 +4,8 @@ import 'package:planetbox/const/starconst.dart';
 import 'package:planetbox/models/country.dart';
 
 class favoriteSelect extends StatefulWidget {
-  const favoriteSelect({super.key});
+  favoriteSelect({super.key, required this.indexed});
+  int indexed;
 
   @override
   State<favoriteSelect> createState() => _favoriteSelectState();
@@ -95,8 +96,10 @@ class _favoriteSelectState extends State<favoriteSelect> {
                                               await Navigator.push(
                                                 context,
                                                 MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      api3(cnt: _cnt!),
+                                                  builder: (context) => api3(
+                                                    cnt: _cnt!,
+                                                    indexed: widget.indexed,
+                                                  ),
                                                 ),
                                               );
                                               setState(() {});
