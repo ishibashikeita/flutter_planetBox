@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:planetbox/apipractice.dart';
+import 'package:planetbox/const/starconst.dart';
+import 'package:planetbox/models/country.dart';
 import 'apipractice.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -15,6 +17,23 @@ class _chooseState extends State<choose> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    Future(() async {
+      final prefs = await SharedPreferences.getInstance();
+      if (prefs.getStringList('fl') != null) {
+        final strList = prefs.getStringList('fl');
+        strList!.forEach((element) {
+          CountryClass res = CountryClass(
+              apiList[int.parse(element)]['name']['common'],
+              apiList[int.parse(element)]['translations']['jpn']['official'],
+              apiList[int.parse(element)]['capitalInfo']['latlng'],
+              apiList[int.parse(element)]['flags']['png'],
+              apiList[int.parse(element)]['capital'],
+              apiList[int.parse(element)]['population']);
+          //favoriteAdd
+          favorite.add({int.parse(element): res});
+        });
+      }
+    });
   }
 
   @override

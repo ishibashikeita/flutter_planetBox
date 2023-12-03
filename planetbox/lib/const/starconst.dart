@@ -5,4 +5,4 @@ const String starApiRoute = 'https://livlog.xyz/hoshimiru/constellation?';
 
 List apiList = [];
 
-List<Map<String, CountryClass>> favorite = [];
+List<Map<int, CountryClass>> favorite = [];

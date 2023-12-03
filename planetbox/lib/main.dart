@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:planetbox/api/fetchCountry.dart';
 import 'package:planetbox/const/starconst.dart';
@@ -45,7 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           GestureDetector(
             onTap: disabled
-                ? () async{
+                ? () async {
                     if (apiList.isEmpty) {
                       setState(() {
                         disabled = false;
@@ -55,8 +57,6 @@ class _MyHomePageState extends State<MyHomePage> {
                           setState(() {
                             disabled = true;
                           });
-                          final prefs = await SharedPreferences.getInstance();
-prefs.getStringList('memoList');
                           Navigator.push(
                             context,
                             MaterialPageRoute(

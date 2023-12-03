@@ -48,9 +48,11 @@ class _favoriteSelectState extends State<favoriteSelect> {
                     itemCount: favorite.length,
                     itemBuilder: (context, index) {
                       CountryClass? _cnt;
+                      int keyList = 0;
                       final _map = favorite[index];
                       _map.forEach((key, value) {
                         _cnt = value;
+                        keyList = key;
                       });
 
                       return Padding(
@@ -99,6 +101,7 @@ class _favoriteSelectState extends State<favoriteSelect> {
                                                   builder: (context) => api3(
                                                     cnt: _cnt!,
                                                     indexed: widget.indexed,
+                                                    keylist: keyList,
                                                   ),
                                                 ),
                                               );

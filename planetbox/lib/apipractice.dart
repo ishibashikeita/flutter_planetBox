@@ -452,7 +452,7 @@ class _apiState2 extends State<api2> {
     favoriteList = false;
     favorite.forEach((element) {
       element.forEach((key, value) {
-        if (key == fav!.name.toString()) {
+        if (key == indexed) {
           favoriteList = true;
         }
       });
@@ -533,23 +533,37 @@ class _apiState2 extends State<api2> {
                                       )
                                     : IconButton(
                                         onPressed: () async {
-                                          favorite.add(
-                                              {fav!.name.toString(): fav!});
+                                          favorite.add({indexed: fav!});
                                           //sharedpref
 
                                           final prefs = await SharedPreferences
                                               .getInstance();
                                           final fl = prefs.getStringList('fl');
-                                          fl!.add(indexed.toString());
-
-                                          prefs
-                                              .setStringList('fl', fl)
-                                              .then((result) {
-                                            setState(() {
-                                              print(prefs.getStringList('fl'));
-                                              favoriteList = true;
+                                          if (fl != null) {
+                                            fl.add(indexed.toString());
+                                            prefs
+                                                .setStringList('fl', fl)
+                                                .then((result) {
+                                              setState(() {
+                                                print(
+                                                    prefs.getStringList('fl'));
+                                                favoriteList = true;
+                                              });
                                             });
-                                          });
+                                          } else {
+                                            List<String> strList = [
+                                              indexed.toString()
+                                            ];
+                                            prefs
+                                                .setStringList('fl', strList)
+                                                .then((result) {
+                                              setState(() {
+                                                print(
+                                                    prefs.getStringList('fl'));
+                                                favoriteList = true;
+                                              });
+                                            });
+                                          }
                                         },
                                         icon: Icon(
                                           Icons.favorite,
@@ -855,9 +869,14 @@ class _apiState2 extends State<api2> {
 }
 
 class api3 extends StatefulWidget {
-  api3({super.key, required this.cnt, required this.indexed});
+  api3(
+      {super.key,
+      required this.cnt,
+      required this.indexed,
+      required this.keylist});
   CountryClass cnt;
   int indexed;
+  int keylist;
 
   @override
   State<api3> createState() => _apiState3();
@@ -883,7 +902,7 @@ class _apiState3 extends State<api3> {
   String capitals = '';
   int population = 0;
   CountryClass? fav;
-  bool favoriteList = false;
+  bool favoriteList = true;
   @override
   void initState() {
     super.initState();
@@ -892,14 +911,6 @@ class _apiState3 extends State<api3> {
     country = (res.name + '(' + res.cname + ')');
 
     fav = res;
-
-    favorite.forEach((element) {
-      element.forEach((key, value) {
-        if (key == fav!.name.toString()) {
-          favoriteList = true;
-        }
-      });
-    });
 
     lat = res.latlng[0];
     lon = res.latlng[1];
@@ -973,7 +984,7 @@ class _apiState3 extends State<api3> {
                                           int i = 0;
                                           favorite.forEach((element) {
                                             element.forEach((key, value) {
-                                              if (key == fav!.name.toString()) {
+                                              if (key == widget.keylist) {
                                                 i = favorite.indexOf(element);
                                               }
                                             });
@@ -1002,23 +1013,37 @@ class _apiState3 extends State<api3> {
                                       )
                                     : IconButton(
                                         onPressed: () async {
-                                          favorite.add(
-                                              {fav!.name.toString(): fav!});
+                                          favorite.add({widget.indexed: fav!});
                                           //sharedpref
 
                                           final prefs = await SharedPreferences
                                               .getInstance();
                                           final fl = prefs.getStringList('fl');
-                                          fl!.add(widget.indexed.toString());
-
-                                          prefs
-                                              .setStringList('fl', fl)
-                                              .then((result) {
-                                            setState(() {
-                                              print(prefs.getStringList('fl'));
-                                              favoriteList = true;
+                                          if (fl != null) {
+                                            fl.add(widget.indexed.toString());
+                                            prefs
+                                                .setStringList('fl', fl)
+                                                .then((result) {
+                                              setState(() {
+                                                print(
+                                                    prefs.getStringList('fl'));
+                                                favoriteList = true;
+                                              });
                                             });
-                                          });
+                                          } else {
+                                            List<String> strList = [
+                                              widget.indexed.toString()
+                                            ];
+                                            prefs
+                                                .setStringList('fl', strList)
+                                                .then((result) {
+                                              setState(() {
+                                                print(
+                                                    prefs.getStringList('fl'));
+                                                favoriteList = true;
+                                              });
+                                            });
+                                          }
                                         },
                                         icon: Icon(
                                           Icons.favorite,
