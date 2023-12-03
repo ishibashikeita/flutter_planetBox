@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:planetbox/const/starconst.dart';
@@ -12,7 +14,7 @@ import 'starpage.dart';
 import 'package:latlong2/latlong.dart' as latLng;
 import 'api/lacate.dart';
 import 'models/country.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:math';
 
 class api extends StatefulWidget {
@@ -506,9 +508,11 @@ class _apiState2 extends State<api2> {
                                               }
                                             });
                                           });
+
                                           setState(() {
                                             favorite.removeAt(i);
                                             favoriteList = false;
+
                                             print(favorite);
                                           });
                                         },
