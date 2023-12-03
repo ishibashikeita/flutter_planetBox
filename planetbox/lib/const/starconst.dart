@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:planetbox/models/country.dart';
 
 const String starApiRoute = 'https://livlog.xyz/hoshimiru/constellation?';
 
 List apiList = [];
 
-List favorite = [];
+List<Map<String, CountryClass>> favorite = [];
