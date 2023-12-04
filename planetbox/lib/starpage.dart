@@ -32,10 +32,10 @@ class _starPageState extends State<starPage> {
         backgroundColor:
             Color.lerp(Color.fromARGB(255, 7, 32, 105), Colors.black, 0.5),
         body: SingleChildScrollView(
-          child: Column(
-            children: [
-              Center(
-                child: Padding(
+          child: Center(
+            child: Column(
+              children: [
+                Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
                     width: size.width * 0.9,
@@ -51,9 +51,7 @@ class _starPageState extends State<starPage> {
                     ),
                   ),
                 ),
-              ),
-              Center(
-                child: Padding(
+                Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
                     width: size.width * 0.9,
@@ -76,19 +74,14 @@ class _starPageState extends State<starPage> {
                                     ),
                                   ),
                                 ),
-                                child: Row(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        '季節',
-                                        style: TextStyle(
-                                          color: Color.fromARGB(
-                                              201, 242, 237, 237),
-                                        ),
-                                      ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    '季節',
+                                    style: TextStyle(
+                                      color: Color.fromARGB(201, 242, 237, 237),
                                     ),
-                                  ],
+                                  ),
                                 ),
                                 width: size.width * 0.8,
                                 height: size.height * 0.05,
@@ -106,13 +99,10 @@ class _starPageState extends State<starPage> {
                                 height: size.height * 0.05,
                                 child: Padding(
                                   padding: const EdgeInsets.all(8.0),
-                                  child: Flexible(
-                                    child: Text(
-                                      widget.star.season,
-                                      style: TextStyle(
-                                        color:
-                                            Color.fromARGB(201, 242, 237, 237),
-                                      ),
+                                  child: Text(
+                                    widget.star.season,
+                                    style: TextStyle(
+                                      color: Color.fromARGB(201, 242, 237, 237),
                                     ),
                                   ),
                                 ),
@@ -124,9 +114,7 @@ class _starPageState extends State<starPage> {
                     ),
                   ),
                 ),
-              ),
-              Center(
-                child: Padding(
+                Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
                     width: size.width * 0.9,
@@ -149,19 +137,14 @@ class _starPageState extends State<starPage> {
                                     ),
                                   ),
                                 ),
-                                child: Row(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        '方向',
-                                        style: TextStyle(
-                                          color: Color.fromARGB(
-                                              201, 242, 237, 237),
-                                        ),
-                                      ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    '方向',
+                                    style: TextStyle(
+                                      color: Color.fromARGB(201, 242, 237, 237),
                                     ),
-                                  ],
+                                  ),
                                 ),
                                 width: size.width * 0.8,
                                 height: size.height * 0.05,
@@ -179,13 +162,10 @@ class _starPageState extends State<starPage> {
                                 height: size.height * 0.05,
                                 child: Padding(
                                   padding: const EdgeInsets.all(8.0),
-                                  child: Flexible(
-                                    child: Text(
-                                      widget.star.direction,
-                                      style: TextStyle(
-                                        color:
-                                            Color.fromARGB(201, 242, 237, 237),
-                                      ),
+                                  child: Text(
+                                    widget.star.direction,
+                                    style: TextStyle(
+                                      color: Color.fromARGB(201, 242, 237, 237),
                                     ),
                                   ),
                                 ),
@@ -197,9 +177,7 @@ class _starPageState extends State<starPage> {
                     ),
                   ),
                 ),
-              ),
-              Center(
-                child: Padding(
+                Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
                     width: size.width * 0.9,
@@ -222,19 +200,14 @@ class _starPageState extends State<starPage> {
                                     ),
                                   ),
                                 ),
-                                child: Row(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        '高さ',
-                                        style: TextStyle(
-                                          color: Color.fromARGB(
-                                              201, 242, 237, 237),
-                                        ),
-                                      ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    '高さ',
+                                    style: TextStyle(
+                                      color: Color.fromARGB(201, 242, 237, 237),
                                     ),
-                                  ],
+                                  ),
                                 ),
                                 width: size.width * 0.8,
                                 height: size.height * 0.05,
@@ -252,13 +225,10 @@ class _starPageState extends State<starPage> {
                                 height: size.height * 0.05,
                                 child: Padding(
                                   padding: const EdgeInsets.all(8.0),
-                                  child: Flexible(
-                                    child: Text(
-                                      widget.star.altitude,
-                                      style: TextStyle(
-                                        color:
-                                            Color.fromARGB(201, 242, 237, 237),
-                                      ),
+                                  child: Text(
+                                    widget.star.altitude,
+                                    style: TextStyle(
+                                      color: Color.fromARGB(201, 242, 237, 237),
                                     ),
                                   ),
                                 ),
@@ -270,9 +240,7 @@ class _starPageState extends State<starPage> {
                     ),
                   ),
                 ),
-              ),
-              Center(
-                child: Padding(
+                Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
                     width: size.width * 0.9,
@@ -295,19 +263,14 @@ class _starPageState extends State<starPage> {
                                     ),
                                   ),
                                 ),
-                                child: Row(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        '内容',
-                                        style: TextStyle(
-                                          color: Color.fromARGB(
-                                              201, 242, 237, 237),
-                                        ),
-                                      ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    '内容',
+                                    style: TextStyle(
+                                      color: Color.fromARGB(201, 242, 237, 237),
                                     ),
-                                  ],
+                                  ),
                                 ),
                                 width: size.width * 0.8,
                                 height: size.height * 0.05,
@@ -325,13 +288,10 @@ class _starPageState extends State<starPage> {
                                 height: size.height * 0.15,
                                 child: Padding(
                                   padding: const EdgeInsets.all(8.0),
-                                  child: Flexible(
-                                    child: Text(
-                                      widget.star.content,
-                                      style: TextStyle(
-                                        color:
-                                            Color.fromARGB(201, 242, 237, 237),
-                                      ),
+                                  child: Text(
+                                    widget.star.content,
+                                    style: TextStyle(
+                                      color: Color.fromARGB(201, 242, 237, 237),
                                     ),
                                   ),
                                 ),
@@ -343,9 +303,7 @@ class _starPageState extends State<starPage> {
                     ),
                   ),
                 ),
-              ),
-              Center(
-                child: Padding(
+                Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
                     width: size.width * 0.9,
@@ -368,19 +326,14 @@ class _starPageState extends State<starPage> {
                                     ),
                                   ),
                                 ),
-                                child: Row(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        '星座の起源',
-                                        style: TextStyle(
-                                          color: Color.fromARGB(
-                                              201, 242, 237, 237),
-                                        ),
-                                      ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    '星座の起源',
+                                    style: TextStyle(
+                                      color: Color.fromARGB(201, 242, 237, 237),
                                     ),
-                                  ],
+                                  ),
                                 ),
                                 width: size.width * 0.8,
                                 height: size.height * 0.05,
@@ -399,13 +352,10 @@ class _starPageState extends State<starPage> {
                                 height: size.height * 0.4,
                                 child: Padding(
                                   padding: const EdgeInsets.all(8.0),
-                                  child: Flexible(
-                                    child: Text(
-                                      widget.star.origin,
-                                      style: TextStyle(
-                                        color:
-                                            Color.fromARGB(201, 242, 237, 237),
-                                      ),
+                                  child: Text(
+                                    widget.star.origin,
+                                    style: TextStyle(
+                                      color: Color.fromARGB(201, 242, 237, 237),
                                     ),
                                   ),
                                 ),
@@ -417,46 +367,46 @@ class _starPageState extends State<starPage> {
                     ),
                   ),
                 ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Compass()),
-                  );
-                },
-                child: Container(
-                  width: size.width * 0.7,
-                  height: size.height * 0.3,
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color:
-                          Color.fromARGB(201, 242, 237, 237).withOpacity(0.1),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Compass()),
+                    );
+                  },
+                  child: Container(
+                    width: size.width * 0.7,
+                    height: size.height * 0.3,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color:
+                            Color.fromARGB(201, 242, 237, 237).withOpacity(0.1),
+                      ),
                     ),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'コンパス',
-                        style: TextStyle(
-                          fontSize: size.width * 0.1,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'コンパス',
+                          style: TextStyle(
+                            fontSize: size.width * 0.1,
+                            color: Color.fromARGB(201, 242, 237, 237),
+                          ),
+                        ),
+                        Icon(
+                          Icons.explore,
+                          size: size.height * 0.1,
                           color: Color.fromARGB(201, 242, 237, 237),
                         ),
-                      ),
-                      Icon(
-                        Icons.explore,
-                        size: size.height * 0.1,
-                        color: Color.fromARGB(201, 242, 237, 237),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: size.height * 0.1,
-              )
-            ],
+                SizedBox(
+                  height: size.height * 0.1,
+                )
+              ],
+            ),
           ),
         ));
   }
