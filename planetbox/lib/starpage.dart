@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:planetbox/compass.dart';
 import 'models/star.dart';
 
 class starPage extends StatefulWidget {
@@ -417,6 +418,44 @@ class _starPageState extends State<starPage> {
                   ),
                 ),
               ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Compass()),
+                  );
+                },
+                child: Container(
+                  width: size.width * 0.7,
+                  height: size.height * 0.3,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color:
+                          Color.fromARGB(201, 242, 237, 237).withOpacity(0.1),
+                    ),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'コンパス',
+                        style: TextStyle(
+                          fontSize: size.width * 0.1,
+                          color: Color.fromARGB(201, 242, 237, 237),
+                        ),
+                      ),
+                      Icon(
+                        Icons.explore,
+                        size: size.height * 0.1,
+                        color: Color.fromARGB(201, 242, 237, 237),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: size.height * 0.1,
+              )
             ],
           ),
         ));
