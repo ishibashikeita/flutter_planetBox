@@ -34,7 +34,8 @@ class _apiState extends State<api> {
   Future? starlist;
   List current = [];
   String locate = '';
-  Future<Position> posi = Geolocator.getCurrentPosition();
+  Future? place;
+  Future? fuposi;
 
   String now = '';
   @override
@@ -61,6 +62,10 @@ class _apiState extends State<api> {
         Position sss = await backPosition();
         print(sss);
         now = DateFormat('yyyy年MM月d日H時mm分').format(DateTime.now()).toString();
+        final posi = await Geolocator.getCurrentPosition();
+        place =
+            geoCoding.placemarkFromCoordinates(posi.latitude, posi.longitude);
+        fuposi = Geolocator.getCurrentPosition();
 
         starlist = fetchstar_current(
           //経度
@@ -93,6 +98,13 @@ class _apiState extends State<api> {
   void dispose() {
     _timer?.cancel();
     super.dispose();
+  }
+
+  Future backplace() async {
+    final geo = await Geolocator.getCurrentPosition();
+    final ss =
+        await geoCoding.placemarkFromCoordinates(geo.latitude, geo.longitude);
+    return ss;
   }
 
   @override
@@ -157,10 +169,15 @@ class _apiState extends State<api> {
                                 height: size.height * 0.06,
                                 child: FittedBox(
                                   child: FutureBuilder(
-                                      future: backpPlace(),
+                                      future: place,
                                       builder: (context, snapshot) {
+                                        if (snapshot.connectionState !=
+                                            ConnectionState.done) {
+                                          print(snapshot.data);
+                                        }
                                         if (snapshot.hasData) {
                                           final ss = snapshot.data!;
+                                          print(ss);
 
                                           return Text(
                                             ss[0]
@@ -229,7 +246,7 @@ class _apiState extends State<api> {
                   height: size.height * 0.4,
                   // color: Colors.black,
                   child: FutureBuilder(
-                      future: posi,
+                      future: fuposi,
                       builder: (context, snapshot) {
                         if (snapshot.connectionState != ConnectionState.done) {
                           return FractionallySizedBox(
@@ -254,8 +271,6 @@ class _apiState extends State<api> {
                               TileLayer(
                                 urlTemplate:
                                     "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-                                subdomains: ['a', 'b', 'c'],
-                                retinaMode: true,
                               ),
                               MarkerLayer(markers: [
                                 Marker(
@@ -399,7 +414,6 @@ class _apiState2 extends State<api2> {
   @override
   void initState() {
     super.initState();
-
     int intRand = Random().nextInt(249);
     if (apiList[intRand]['name']['common'] != null ||
         apiList[intRand]['translations']['jpn']['official'] != null ||

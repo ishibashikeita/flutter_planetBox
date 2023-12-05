@@ -52,7 +52,9 @@ class _CompassState extends State<Compass> {
                   }
 
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return CircularProgressIndicator();
+                    return Center(
+                      child: Image.asset('assets/images/compass-4.png'),
+                    );
                   }
                   return Center(
                     child: Transform.rotate(
