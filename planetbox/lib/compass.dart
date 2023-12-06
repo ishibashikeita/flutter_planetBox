@@ -14,6 +14,7 @@ class _CompassState extends State<Compass> {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
